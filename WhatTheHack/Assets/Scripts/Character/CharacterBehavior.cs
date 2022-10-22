@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float _speed = 20f;
+
+    [SerializeField]
+    private GameObject _player;
+  private void Update()
+  {
+        PlayerMovement();
+        PlayerShoot();
+  }
+
+    private void PlayerShoot() //Click to shoot and and aim at mouse position
     {
-        
+       
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlayerMovement() //WASD or ArrowKeys
     {
-        
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        transform.position += new Vector3 (x ,z, 0) * _speed * Time.deltaTime;
     }
 }
